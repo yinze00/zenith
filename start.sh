@@ -1,0 +1,1 @@
+./zenith_server 2>&1 > start.log 

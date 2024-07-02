@@ -1,0 +1,22 @@
+syntax="proto3";
+package zenith.recall;
+
+option cc_generic_services = true;
+
+message ZenithRequest {
+    string message = 1;
+    repeated float query_emb = 2;
+    int32 topk = 3;
+    string index_name = 4;
+    string biz = 5;
+};
+
+message ZenithResponse {
+    string message = 1;
+    repeated int64 gids = 2;
+    repeated float sims = 3;
+};
+
+service ZenithService {
+      rpc Recall(ZenithRequest) returns (ZenithResponse);
+};

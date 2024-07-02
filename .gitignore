@@ -1,0 +1,6 @@
+core
+bazel-*
+.cache/
+compile_commands.json
+*.log
+zenith_server

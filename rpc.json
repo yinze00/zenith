@@ -1,0 +1,12 @@
+{
+    "message": "Request for LTR-model",
+    "query_emb": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+    ],
+    "topk": 100,
+    "index_name": "brandon_hnm_v3",
+    "biz": "default"
+}
