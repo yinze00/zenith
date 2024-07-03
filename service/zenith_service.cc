@@ -17,7 +17,9 @@ nexus::turing::GraphRequest *ToGraphRequest(const recall::ZenithRequest *req) {
 
   auto graph_info = graph_request->mutable_graph_info();
 
-  graph_info->add_fetches()->assign("recall_results");
+  graph_info->add_fetches()->assign("ResultConstructOp:0");
+  graph_info->add_fetches()->assign("ResultConstructOp:1");
+
   graph_info->add_targets()->assign(nexus::common::KGRAPH_DONE);
 
   tensorflow::Tensor emb(

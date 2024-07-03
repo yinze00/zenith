@@ -2,6 +2,9 @@ cc_library(
     name = "zenith_service", 
     hdrs = glob(["*.hh"]),
     srcs = glob(["*.cc"]),
+    copts = [
+        "-g",
+    ],
     visibility = ["//visibility:public"],
     deps = [
         "@brpc",

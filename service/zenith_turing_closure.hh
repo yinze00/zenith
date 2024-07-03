@@ -30,12 +30,15 @@ public:
       tensor.FromProto(nt.tensor());
       LOG(INFO) << nt.name() << " " << tensor.DebugString(100);
 
-      float *l = tensor.flat<float>().data();
-      size_t len = tensor.flat<float>().size();
-
       // TODO: config the head by json params
-      if (nt.name() == "recall_results") {
+      if (nt.name() == "result_scores") {
+        float *l = tensor.flat<float>().data();
+        size_t len = tensor.flat<float>().size();
         rsp->mutable_sims()->Assign(l, l + len);
+      } else if (nt.name() == "result_labels") {
+        int32_t *l = tensor.flat<int32_t>().data();
+        size_t len = tensor.flat<int32_t>().size();
+        rsp->mutable_gids()->Assign(l, l + len);
       }
     }
   }
