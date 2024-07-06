@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bazelisk build //:zenith_server --incompatible_struct_has_no_methods --config=lld --color=auto
+bazelisk build //:zenith_server  --strip=never -c dbg --incompatible_struct_has_no_methods --config=lld --color=auto
 
 # ln -sf bazel-zenith/external 
 

@@ -51,7 +51,6 @@ void ZenithServiceImpl::Recall(google::protobuf::RpcController *cntl_base,
                                const recall::ZenithRequest *req,
                                recall::ZenithResponse *rsp,
                                google::protobuf::Closure *done) {
-  LOG(INFO) << "Hello, this is Recall Server";
 
   rsp->set_message("sss");
 
