@@ -35,6 +35,11 @@ nexus::turing::GraphRequest *ToGraphRequest(const recall::ZenithRequest *req) {
   // in->mutable_tensor()
   emb.AsProtoTensorContent(in->mutable_tensor());
 
+  auto in_topk = graph_info->add_inputs();
+  *in_topk->mutable_name() = "topk";
+  in_topk->mutable_tensor()->add_uint32_val(req->topk());
+  in_topk->mutable_tensor()->set_dtype(::tensorflow::DT_UINT32);
+
   return graph_request;
 }
 
@@ -52,7 +57,7 @@ void ZenithServiceImpl::Recall(google::protobuf::RpcController *cntl_base,
                                recall::ZenithResponse *rsp,
                                google::protobuf::Closure *done) {
 
-  rsp->set_message("sss");
+  rsp->set_message("Hello From Server.");
 
   auto graph_request = ToGraphRequest(req);
   auto graph_response = new nexus::turing::GraphResponse();

@@ -31,13 +31,13 @@ public:
       LOG(INFO) << nt.name() << " " << tensor.DebugString(100);
 
       // TODO: config the head by json params
-      if (nt.name() == "result_scores") {
+      if (nt.name() == "ResultConstructOp:1") {
         float *l = tensor.flat<float>().data();
         size_t len = tensor.flat<float>().size();
         rsp->mutable_sims()->Assign(l, l + len);
-      } else if (nt.name() == "result_labels") {
-        int32_t *l = tensor.flat<int32_t>().data();
-        size_t len = tensor.flat<int32_t>().size();
+      } else if (nt.name() == "ResultConstructOp:0") {
+        uint32_t *l = tensor.flat<uint32_t>().data();
+        size_t len = tensor.flat<uint32_t>().size();
         rsp->mutable_gids()->Assign(l, l + len);
       }
     }
